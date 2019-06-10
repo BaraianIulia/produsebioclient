@@ -1,0 +1,21 @@
+<div class="container">
+
+  <label for="discount">Reducere cat % din prețul total: </label>
+  <input type="text" class="form-control" id="discount" #discount required>
+
+  <label>Data start </label>
+  <ejs-datepicker id='datepickerstart' #datastart placeholder='Select a date' [value]='value' [min]='minDate'
+                  [max]='maxDate' (change)="changeDataStart(datastart.value)"></ejs-datepicker>
+
+  <label>Data final </label>
+  <ejs-datepicker id='datepickerfinal' #datafinal placeholder='Select a date' [value]='value' [min]='minDate'
+                  [max]='maxDate' (change)="changeDataFinal(datafinal.value)"></ejs-datepicker>
+
+  <br>
+
+  <button mat-raised-button
+
+          (click)="setDiscount(discount.value)">
+    Adaugă reducere
+  </button>
+</div>

@@ -1,0 +1,18 @@
+<div class="list">
+  <ul>
+    <li *ngFor="let item of produseService.listMyProducts | paginate: config"><p id="nume">{{ item.nume }}</p>
+      <p id="descriere">{{item.descriere}}</p>
+      <img class="center-block" src={{item.poza}} width="250" height="250">
+      <p id="pret">Preț: {{item.pret}} LEI</p>
+      <br>
+      <br>
+      <button mat-raised-button
+
+              (click)="seeDetails(item.idprodus)">
+        Adaugă reducere
+      </button>
+    </li>
+  </ul>
+  <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+
+</div>

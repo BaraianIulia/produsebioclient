@@ -1,0 +1,30 @@
+<div class="container">
+
+  <h1>Conectare</h1>
+  <form>
+
+    <label for="mail">Mail </label>
+    <input type="email" class="form-control" id="mail" #mail required email="true">
+
+
+    <show-hide-password id="container_password"  btnStyle="primary" [btnOutline]="false">
+      <label for="parola">Parola</label>
+      <input id="parola" type="password" class="form-control" #parola required>
+    </show-hide-password>
+
+
+    <p>Sunt</p>
+    <select #functie ng-init='answer = "client"' ng-model='answer' >
+      <option value='client' selected>Client</option>
+      <option value='furnizor'>Furnizor</option>
+    </select>
+
+
+    <button id="loginbtn" mat-raised-button (click)="login(mail.value,parola.value,functie.value)">Conectare</button>
+    <button id="registerbtn" mat-raised-button (click)="redirectToRegisterPage()">Creeaz&#259; cont</button>
+
+
+  </form>
+
+</div>
+

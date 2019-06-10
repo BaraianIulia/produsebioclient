@@ -1,0 +1,16 @@
+<div class="list">
+  <ul>
+    <li *ngFor="let item of recipeService.list | paginate: config"><p id="nume">{{ item.nume }}</p>
+      <img class="center-block" src={{item.poza}} width="250" height="250">
+      <br>
+      <br>
+      <button mat-raised-button
+
+              (click)="seeDetails(item.idreteta)">
+        Vezi detalii
+      </button>
+    </li>
+  </ul>
+  <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+
+</div>

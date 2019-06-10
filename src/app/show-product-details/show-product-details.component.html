@@ -1,0 +1,44 @@
+<div class="container">
+
+  <img class="center-block" src={{produseService.productFound.poza}} width="250" height="250">
+  <br>
+  <p id="nume">Nume: {{ produseService.productFound.nume }}</p>
+  <p id="descriere">Descriere: {{produseService.productFound.descriere}}</p>
+  <p id="stoc">Stoc: {{ produseService.productFound.stoc }}</p>
+  <p id="zona">Zona: {{produseService.productFound.zona}}</p>
+  <p id="categorie">Categorie: {{ produseService.productFound.categorie }}</p>
+  <p id="dataProducere">Data producere: {{produseService.productFound.dataProducere | date : 'dd/MM/yyyy'}}</p>
+
+
+  <p id="unitateDeMasura">Cantitate: {{produseService.productFound.valoareMasura}} {{
+    produseService.productFound.unitateDeMasura }}</p>
+  <p id="pret">Preț: {{ produseService.productFound.pret }} Lei</p>
+
+  <p id="termenValabilitate">Termen valabilitate de la data producerii:
+    {{produseService.productFound.termenValabilitate}} Zile</p>
+
+  <p>Votează produsul</p>
+  <rating [(ngModel)]="rate"
+          readOnly="false"
+          max="5"
+          emptyStarIconName="star-outline"
+          halfStarIconName="star-half"
+          starIconName="star"
+          nullable="false"
+          (ngModelChange)="onStarChange($event)"></rating>
+  <p>Scorul actual al produsului:</p>
+  {{produseService.recenzieProdusTotal.vot}}
+  <br>
+  <br>
+  <p *ngIf="currentFunction === 'client'"> Alege numărul de bucăți și adaugă în coș</p>
+  <label *ngIf="currentFunction === 'client'" for="nrBucati">Număr bucăți </label>
+  <input (change)="changeNumarBucati(nrBucati.value)" *ngIf="currentFunction === 'client'" type="text"
+         class="form-control" id="nrBucati" #nrBucati required>
+  <br>
+  <button *ngIf="currentFunction === 'client'" type="button" class="btn btn-outline-success"
+          (click)="addCart()">Adaugă în coș
+  </button>
+
+
+</div>
+

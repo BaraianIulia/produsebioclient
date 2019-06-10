@@ -1,0 +1,26 @@
+#menu{
+  background-color: lightgreen;
+}
+#shopping_cart{
+  position: absolute;
+  right: 30px;
+  margin: 0;
+}
+#account_circle{
+  position: absolute;
+  right: 60px;
+  margin: 0;
+}
+
+p{
+  position: absolute;
+  right: 100px;
+}
+
+
+
+
+
+
+
+

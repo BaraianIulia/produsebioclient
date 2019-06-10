@@ -1,0 +1,36 @@
+<div class="list">
+  <table  *ngFor="let item of produseService.cartList">
+    <tr>
+      <th>Nume produs</th>
+      <th>Cantitate</th>
+      <th>Preț</th>
+    </tr>
+    <tr>
+      <td>{{ item.produs.nume }}</td>
+      <td>{{item.nrBucati}}</td>
+      <td>{{item.nrBucati * item.produs.pret}}</td>
+      <td> <button *ngIf="produseService.cartList.length > 0 " mat-raised-button
+
+                   (click)="deleteProductFromCart(item.produs.idprodus)">
+        Șterge
+      </button></td>
+    </tr>
+  </table>
+  <table  *ngIf="produseService.cartList.length > 0 ">
+    <tr>
+      <th>Preț total</th>
+    </tr>
+    <tr>
+      <td>{{produseService.getTotalPriceCart()}}</td>
+
+    </tr>
+  </table>
+  <p *ngIf="produseService.cartList.length <= 0 ">Coșul este gol.</p>
+  <br>
+      <p *ngIf="produseService.cartList.length > 0 " id="pretTransport">Preț transport 15 Lei</p>
+  <button *ngIf="produseService.cartList.length > 0 " mat-raised-button
+
+          (click)="buyProductsFromCart()">
+    Cumpără
+  </button>
+</div>

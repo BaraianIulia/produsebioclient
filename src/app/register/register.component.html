@@ -1,0 +1,96 @@
+<div class="container">
+
+  <h1>Creeaza cont</h1>
+  <form>
+
+    <label for="nume">Nume </label>
+    <input type="text" class="form-control" id="nume" #nume required>
+
+    <label for="prenume">Prenume </label>
+    <input type="text" class="form-control" id="prenume" #prenume required>
+
+    <label>Data nașterii </label>
+    <ejs-datepicker id='datepicker' #datanasterii placeholder='Select a date' [value]='value' [min]='minDate'
+                    [max]='maxDate' (change)="changeDataNasterii(datanasterii.value)"></ejs-datepicker>
+
+    <label for="mail">Mail </label>
+    <input type="email" class="form-control" id="mail" #mail required email="true">
+
+    <label for="parola">Parola </label>
+    <input type="password" class="form-control" id="parola" #parola required>
+
+    <label for="repetaparola">Repetă parola </label>
+    <input type="password" class="form-control" id="repetaparola" #repetaparola required>
+
+    <label for="telefon">Telefon </label>
+    <input type="text" class="form-control" id="telefon" #telefon required>
+
+    <label for="adresa">Adresa </label>
+    <input type="text" class="form-control" id="adresa" #adresa required>
+
+    <label for="file">Alege o poză</label>
+    <input id="file" #file type="file" (change)="handleFileInput($event)"/>
+    <img [src]="imgURL" height="200" *ngIf="imgURL">
+
+
+    <p>Sunt</p>
+    <select #functie ng-init='answer = "client"' ng-model='answer' (change)="changeType(functie.value)">
+      <option value='client' selected>Client</option>
+      <option value='furnizor'>Furnizor</option>
+    </select>
+    <br>
+    <br>
+
+    <h4 *ngIf="functie.value === 'client'">Carduri</h4>
+
+    <span *ngIf="functie.value === 'client'"
+          tooltip="<p>Numărul cardului se află pe partea din față și este format din 12 cifre</p>">
+    <button>?</button>
+    </span>
+    <label *ngIf="functie.value === 'client'" for="numar">Număr </label>
+    <input *ngIf="functie.value === 'client'" placeholder="0000 0000 0000 0000" type="text" class="form-control"
+           id="numar" #numar required (change)="changeNumar(numar.value)">
+
+    <span *ngIf="functie.value === 'client'" tooltip="<p>Data de expirare este pe partea din față a cardului</p>">
+    <button>?</button>
+    </span>
+
+    <label *ngIf="functie.value === 'client'" for="dataexpirare">Dată expirare </label>
+    <input *ngIf="functie.value === 'client'" placeholder="00/00" type="text" class="form-control" id="dataexpirare"
+           #dataexpirare required (change)="changeDataExpirare(dataexpirare.value)">
+
+    <span *ngIf="functie.value === 'client'"
+          tooltip="<p>Cvv cod se află pe partea din spate a cardului și este format din ultimele 3 cifre</p>">
+    <button>?</button>
+    </span>
+
+    <label *ngIf="functie.value === 'client'" for="cvvcod">Cvv cod </label>
+    <input *ngIf="functie.value === 'client'" placeholder="000" type="text" class="form-control" id="cvvcod" #cvvcod
+           required (change)="changeCvvcod(cvvcod.value)">
+
+    <span *ngIf="functie.value === 'furnizor'" tooltip="<p>Codul iban este format din 24 de caractere</p>">
+    <button>?</button>
+    </span>
+
+    <label *ngIf="functie.value === 'furnizor'" for="codiban">Cod IBAN</label>
+    <input *ngIf="functie.value === 'furnizor'" placeholder="ROXXXXXXXXXXXXXXXXXXXXXX" type="text" class="form-control"
+           id="codiban" #codiban required (change)="changeCodIBAN(codiban.value)">
+
+    <label *ngIf="functie.value === 'furnizor'" for="descriere">Spune ceva despre tine(ex. diplome) - opțional</label>
+    <input *ngIf="functie.value === 'furnizor'" type="text" class="form-control" id="descriere" #descriere required
+           (change)="changeDescriere(descriere.value)">
+
+
+    <br>
+    <br>
+    <button mat-raised-button
+
+            (click)="register(nume.value, prenume.value, mail.value, parola.value, repetaparola.value, telefon.value,
+           adresa.value)">
+      Creeaz&#259; cont
+    </button>
+
+  </form>
+
+</div>
+

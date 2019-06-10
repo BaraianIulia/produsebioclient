@@ -1,0 +1,31 @@
+<div class="container"> <h4 >Carduri</h4>
+
+<span
+      tooltip="<p>Numărul cardului se află pe partea din față și este format din 12 cifre</p>">
+    <button>?</button>
+    </span>
+<label for="numar">Număr </label>
+<input placeholder="0000 0000 0000 0000" type="text" class="form-control"
+       id="numar" #numar required >
+
+<span tooltip="<p>Data de expirare este pe partea din față a cardului</p>">
+    <button>?</button>
+    </span>
+
+<label  for="dataexpirare">Dată expirare </label>
+<input  placeholder="00/00" type="text" class="form-control" id="dataexpirare"
+       #dataexpirare required >
+
+<span
+      tooltip="<p>Cvv cod se află pe partea din spate a cardului și este format din ultimele 3 cifre</p>">
+    <button>?</button>
+    </span>
+
+<label  for="cvvcod">Cvv cod </label>
+<input  placeholder="000" type="text" class="form-control" id="cvvcod" #cvvcod
+       required >
+
+  <br>
+
+<button type="button" class="btn btn-outline-success" (click)="editCard(numar.value,dataexpirare.value,cvvcod.value)">Editează datele</button>
+</div>

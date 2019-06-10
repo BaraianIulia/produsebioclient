@@ -1,0 +1,14 @@
+<div class="list">
+  <ul>
+    <li *ngFor="let item of userService.getListProducer() | paginate: config">
+      <p id="nume">Nume: {{ item.nume }}</p>
+      <p id="prenume">Prenume: {{item.prenume}}</p>
+      <p id="descriere">{{item.descriere}}</p>
+      <p id="mail">Mail: {{item.mail}}</p>
+      <img class="center-block" src={{item.poza}} width="250" height="250">
+
+    </li>
+  </ul>
+  <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+
+</div>

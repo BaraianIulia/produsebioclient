@@ -1,0 +1,44 @@
+<div class="container">
+
+  <h1>Editează date</h1>
+  <form>
+
+    <label for="prenume">Prenume </label>
+    <input type="text" class="form-control" id="prenume" #prenume required>
+
+    <label for="parolaveche">Parola veche</label>
+    <input type="password" class="form-control" id="parolaveche" #parolaveche required>
+
+    <label for="parola">Parola nouă</label>
+    <input type="password" class="form-control" id="parola" #parola required>
+
+    <label for="repetaparola">Repetă parola </label>
+    <input type="password" class="form-control" id="repetaparola" #repetaparola required>
+
+    <label for="telefon">Telefon </label>
+    <input type="text" class="form-control" id="telefon" #telefon required>
+
+    <label for="adresa">Adresa </label>
+    <input type="text" class="form-control" id="adresa" #adresa required>
+
+    <label *ngIf="userservice.getFunctie() === 'furnizor'" for="descriere">Spune ceva despre tine(ex. diplome) - opțional</label>
+    <input *ngIf="userservice.getFunctie()  === 'furnizor'" type="text" class="form-control" id="descriere" #descriere required
+           (change)="changeDescriere(descriere.value)">
+
+    <label for="file">Alege o poză</label>
+    <input id="file" #file type="file" (change)="handleFileInput($event)"/>
+    <img [src]="imgURL" height="200" *ngIf="imgURL">
+
+    <br>
+    <br>
+    <button mat-raised-button
+
+            (click)="editData(prenume.value,parolaveche.value, parola.value, repetaparola.value, telefon.value,
+           adresa.value)">
+      Editeaz&#259; datele
+    </button>
+
+  </form>
+
+</div>
+

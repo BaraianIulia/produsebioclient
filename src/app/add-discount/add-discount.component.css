@@ -1,0 +1,22 @@
+div.container {
+  overflow: hidden;
+  background-color: lightgreen;
+  padding: 40px 30px 30px 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 1000px;
+}
+button {
+  margin-right: 10px;
+  color: forestgreen;
+  background-color: white;
+
+}
+
+button:hover {
+  color: white;
+  background-color: forestgreen;
+
+}

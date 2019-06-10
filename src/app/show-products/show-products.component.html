@@ -1,0 +1,18 @@
+<div class="list">
+  <ul>
+    <li *ngFor="let item of produseService.list | paginate: config"><p id="nume">{{ item.nume }}</p>
+      <p id="descriere">{{item.descriere}}</p>
+      <p *ngIf="produseService.getDiscount(item.idprodus) > 0" id="reducere">{{produseService.getDiscount(item.idprodus).procent}}</p>
+      <img class="center-block" src={{item.poza}} width="250" height="250">
+      <br>
+      <br>
+      <button mat-raised-button
+
+              (click)="seeDetails(item.idprodus)">
+        Vezi detalii
+      </button>
+    </li>
+  </ul>
+  <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+
+</div>

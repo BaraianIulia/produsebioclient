@@ -1,0 +1,47 @@
+* {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+
+}
+
+p {
+  display: inline-block;
+  margin-right: 10px;
+
+}
+
+
+select {
+  display: inline-block;
+  margin-right: 200px;
+  margin-top: 10px;
+}
+
+
+
+button {
+  margin-right: 10px;
+  color: forestgreen;
+  background-color: white;
+
+}
+
+button:hover {
+  color: white;
+  background-color: forestgreen;
+
+}
+
+div {
+  overflow: hidden;
+  background-color: lightgreen;
+  padding: 40px 30px 30px 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: 15%;
+  left: 35%;
+  width: 400px;
+}
+
+show-hide-password{
+  width: 290px;
+}

@@ -1,0 +1,92 @@
+<div class="container">
+
+  <h1>Adaugă produs</h1>
+  <form>
+
+        <span tooltip="<p>Acesta este numele pe care îl va vedea clientul.</p>">
+    <button>?</button>
+    </span>
+    <label for="nume">Nume produs</label>
+    <input type="text" class="form-control" id="nume" #nume required>
+
+    <span
+      tooltip="<p>Spre exemplu dacă adăugați o băutură puteți specifica dacă aceasta conține alcool sau nu, iar dacă adăugați carne puteți menționa animalul, ce organ este..</p>">
+    <button>?</button>
+    </span>
+    <label for="descriere">Descriere produs </label>
+    <input type="text" class="form-control" id="descriere" #descriere required>
+
+    <label>Categorie produs</label>
+    <select #categorie ng-init='answer = "legume"' ng-model='answer' (change)="changeCategory(categorie.value)">
+      <option value='legume' selected>Legume</option>
+      <option value='fructe'>Fructe</option>
+      <option value='carne'>Carne</option>
+      <option value='oua'>Ouă</option>
+      <option value='cereale'>Cereale</option>
+      <option value='bauturi'>Băuturi</option>
+      <option value='altele'>Altele</option>
+    </select>
+
+    <br>
+    <label>Unitate măsură produs</label>
+    <select #unitate ng-init='answer = "kg"' ng-model='answer' (change)="changeMU(unitate.value)">
+      <option value='kg' selected>kg</option>
+      <option value='l'>l</option>
+      <option value='bucata'>bucată</option>
+      <option value='ml'>ml</option>
+    </select>
+
+    <br>
+    <span tooltip="<p>Spre exemplu vindeți roșiile la un kilogram => valoare masură = 1.</p>">
+    <button>?</button>
+    </span>
+    <label for="valoaremasura">Valoare măsură</label>
+    <input type="text" class="form-control" id="valoaremasura" #valoaremasura required>
+
+
+    <span tooltip="<p>Prețul pentru un kg în raport cu valoarea scrisă la valoare măsură.</p>">
+    <button>?</button>
+    </span>
+    <label for="pret">Preț </label>
+    <input class="form-control" id="pret" #pret required>
+
+    <span tooltip="<p>Spre exemplu puneți spre vânzare 10 kg roșii.</p>">
+    <button>?</button>
+    </span>
+    <label for="cantitate">Cantitate produse</label>
+    <input type="text" class="form-control" id="cantitate" #cantitate required>
+
+    <label>Data producere produs </label>
+    <ejs-datepicker id='datepicker' #dataproducere placeholder='Selectează o dată' [value]='value' [min]='minDate'
+                    [max]='maxDate' (change)="changeDataProducere(dataproducere.value)"></ejs-datepicker>
+    <span tooltip="<p>Numărul de zile.</p>">
+    <button>?</button>
+    </span>
+    <label for="termenvalabilitate">Termen valabilitate </label>
+    <input class="form-control" id="termenvalabilitate" #termenvalabilitate required>
+
+
+    <span tooltip="<p>Localitatea/Satul.</p>">
+    <button>?</button>
+    </span>
+    <label for="zona">Zona </label>
+    <input class="form-control" id="zona" #zona required>
+
+    <span tooltip="<p>Poză pentru produs.</p>">
+    <button>?</button>
+    </span>
+    <label for="file">Alege o poză</label>
+    <input id="file" #file type="file" (change)="handleFileInput($event)"/>
+    <img [src]="imgURL" height="200" *ngIf="imgURL">
+
+    <br>
+    <button mat-raised-button
+
+            (click)="addProduct(nume.value, descriere.value, cantitate.value, pret.value, termenvalabilitate.value, zona.value,valoaremasura.value)">
+      Adaug&#259; produs
+    </button>
+
+  </form>
+
+</div>
+

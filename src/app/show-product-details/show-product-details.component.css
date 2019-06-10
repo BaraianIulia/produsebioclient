@@ -1,0 +1,77 @@
+div {
+  overflow: hidden;
+  background-color: lightgreen;
+  padding: 40px 30px 20px 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: 15%;
+  left: 30%;
+  width: 600px;
+}
+
+p{
+  font-size: 140%;
+}
+
+img{
+  border: 5px solid forestgreen;
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+button {
+  margin-right: 10px;
+  color: forestgreen;
+  background-color: white;
+
+}
+
+button:hover {
+  color: white;
+  background-color: forestgreen;
+
+}
+
+.rating {
+  float:left;
+}
+
+.rating:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+  clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+  float:right;
+  width:1em;
+  padding:0.1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:200%;
+  line-height:1.2;
+  color:#ddd;
+}
+
+.rating:not(:checked) > label:before {
+  content: '★ ';
+}
+
+.rating > input:checked ~ label {
+  color: #f70;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: gold;
+}
+
+
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #ea0;
+}

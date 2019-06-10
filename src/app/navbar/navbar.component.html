@@ -1,0 +1,34 @@
+<mat-toolbar id="menu">
+  <span>Magazinul meu bio</span>
+  <button mat-button (click)="redirectToHomePage()">Acasă</button>
+
+
+  <button mat-button (click)="redirectToShowProducts()">Produse</button>
+
+  <button mat-button (click)="redirectToMyProducerPage()">Producători</button>
+
+
+  <button mat-button (click)="redirectToShowRecipe()">Rețete</button>
+  <button mat-button (click)="redirectToContactPage()">Contact</button>
+
+  <button *ngIf="currentFunction === 'furnizor'"  mat-button [matMenuTriggerFor]="adauga">Adaugă</button>
+  <mat-menu #adauga="matMenu" yPosition="above">
+    <button mat-menu-item (click)="redirectToAddProduct()">Adaugă produse</button>
+    <button mat-menu-item (click)="redirectToAddRecipe()">Adaugă rețetă</button>
+    <button mat-menu-item (click)="redirectToAddDiscount()">Adaugă reducere</button>
+
+  </mat-menu>
+
+  <p *ngIf="currentUser !== null">{{currentUser.prenume}}</p>
+  <mat-icon id="account_circle" [matMenuTriggerFor]="profileMenu">account_circle</mat-icon>
+  <mat-menu #profileMenu="matMenu" yPosition="above">
+    <button *ngIf="currentFunction !== null" mat-menu-item (click)="redirectToMyProfilePage()">Profilul meu
+    </button>
+    <button *ngIf="currentFunction === null" mat-menu-item (click)="redirectToLoginPage()">Conectare</button>
+    <button *ngIf="currentFunction !== null" mat-menu-item (click)="userservice.logout()">Deconectare</button>
+  </mat-menu>
+
+  <mat-icon *ngIf=" currentFunction === 'client'" id="shopping_cart" (click)="redirectToCartPage()">shopping_cart</mat-icon>
+
+
+</mat-toolbar>

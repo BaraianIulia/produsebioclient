@@ -1,0 +1,12 @@
+<div class="container">
+  <label for="codiban">Cod IBAN</label>
+  <input placeholder="ROXXXXXXXXXXXXXXXXXXXXXX" type="text" class="form-control"
+         id="codiban" #codiban required>
+  <br>
+  <br>
+  <button mat-raised-button
+
+          (click)="editCodIBAN(codiban.value)">
+    Editează datele
+  </button>
+</div>

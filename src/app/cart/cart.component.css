@@ -1,0 +1,40 @@
+div.list {
+  overflow: hidden;
+  background-color: lightgreen;
+  padding: 40px 30px 30px 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: 15%;
+  left: 35%;
+  width: 400px;
+}
+
+
+
+p{
+  text-align: left;
+  font-size: 15px;
+  font-weight: bold;
+}
+button {
+  margin-right: 10px;
+  color: forestgreen;
+  background-color: white;
+  margin-bottom: 5px;
+  margin-left: 10px;
+
+}
+
+button:hover {
+  color: white;
+  background-color: forestgreen;
+  margin-bottom: 5px;
+  margin-left: 10px;
+
+}
+
+ td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+

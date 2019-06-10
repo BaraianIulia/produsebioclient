@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h1>Adaugă rețetă</h1>
+  <form>
+
+    <label for="nume">Nume rețetă</label>
+    <input type="text" class="form-control" id="nume" #nume required>
+
+    <label for="produse">Produse necesare </label>
+    <input type="text" class="form-control" id="produse" #produse required>
+
+    <label for="mod_preparare">Mod preparare </label>
+    <textarea class="form-control" id="mod_preparare" #mod_preparare cols="5" rows="5"></textarea>
+
+    <label for="timp">Timp </label>
+    <input type="text" class="form-control" id="timp" #timp required>
+
+    <label for="buget">Buget </label>
+    <input type="text" class="form-control" id="buget" #buget required>
+
+    <label for="file">Alege o poză</label>
+    <input id="file" #file type="file" (change)="handleFileInput($event)"/>
+    <img [src]="imgURL" height="200" *ngIf="imgURL">
+
+    <br>
+    <br>
+    <button mat-raised-button
+
+            (click)="addRecipe(nume.value, produse.value, mod_preparare.value, timp.value, buget.value)">
+      Adaug&#259; rețeta
+    </button>
+
+  </form>
+
+</div>
+

@@ -1,0 +1,23 @@
+<div class="container">
+  <img [src]="imgURL" *ngIf="imgURL" class="rounded-circle">
+  <h2>Profilul meu</h2>
+  <p>Nume: {{currentUser.nume}} </p>
+  <p>Prenume: {{currentUser.prenume}}</p>
+  <p>Data nașterii: {{currentUser.datanasterii | date : 'dd/MM/yyyy'}}</p>
+  <p>Mail: {{currentUser.mail}}</p>
+  <p>Telefon: {{currentUser.telefon}}</p>
+  <p>Adresa: {{currentUser.adresa}}</p>
+  <p>Puncte: {{currentUser.puncte}}</p>
+  <p *ngIf="currentFunction === 'furnizor'">Descriere: {{currentUser.descriere}}</p>
+  <br>
+  <br>
+
+  <button type="button" class="btn btn-outline-success" (click)="redirectToEditDataProfile()">Editează datele</button>
+  <button *ngIf="currentFunction === 'client'"type="button" class="btn btn-outline-success" (click)="redirectToEditCard()">Schimbă card</button>
+  <button *ngIf="currentFunction === 'client'"type="button" class="btn btn-outline-success" (click)="redirectToViewCard()">Vezi card</button>
+
+  <button *ngIf="currentFunction === 'furnizor'" type="button" class="btn btn-outline-success" (click)="redirectToEditCodIBAN()">Schimbă codIBAN</button>
+
+  <button *ngIf="currentFunction === 'furnizor'" type="button" class="btn btn-outline-success" (click)="redirectToViewCodIBAN()">Vezi codIBAN</button>
+
+</div>
