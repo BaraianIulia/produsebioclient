@@ -45,10 +45,6 @@ export class NavbarComponent implements OnInit {
     location.href = '';
   }
 
-  redirectToShowProducts() {
-    location.href = '/products';
-  }
-
   redirectToAddProduct() {
     location.href = 'product/add';
   }
@@ -65,5 +61,37 @@ export class NavbarComponent implements OnInit {
   redirectToAddDiscount() {
     console.log('lista produsele mele');
     location.href = 'products/discount';
+  }
+
+  redirectToShowProductsToate() {
+    location.href = '/products/show/toate';
+  }
+
+  redirectToShowProductsLegume() {
+    location.href = '/products/show/legume';
+  }
+
+  redirectToShowProductsFructe() {
+    location.href = '/products/show/fructe';
+  }
+
+  redirectToShowProductsCarne() {
+    location.href = '/products/show/carne';
+  }
+
+  redirectToShowProductsOua() {
+    location.href = '/products/show/oua';
+  }
+
+  redirectToShowProductsCereale() {
+    location.href = '/products/show/cereale';
+  }
+
+  redirectToShowProductsBauturi() {
+    location.href = '/products/show/bauturi';
+  }
+
+  redirectToShowProductsAltele() {
+    location.href = '/products/show/altele';
   }
 }

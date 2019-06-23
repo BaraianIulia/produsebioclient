@@ -2,18 +2,18 @@ export class Recenzie {
 
   idrecenzie: number;
   idprodus: number;
-  textrecenzie: string;
+  textRecenzie: string;
   vot: number;
-  datarecenzie: Date;
+  dataRecenzie: Date;
   autor: string;
 
 
   constructor(idrecenzie: number, idprodus: number, textrecenzie: string, vot: number, datarecenzie: Date, autor: string) {
     this.idrecenzie = idrecenzie;
     this.idprodus = idprodus;
-    this.textrecenzie = textrecenzie;
+    this.textRecenzie = textrecenzie;
     this.vot = vot;
-    this.datarecenzie = datarecenzie;
+    this.dataRecenzie = datarecenzie;
     this.autor = autor;
   }
 }

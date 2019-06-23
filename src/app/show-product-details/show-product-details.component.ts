@@ -28,7 +28,7 @@ export class ShowProductDetailsComponent implements OnInit {
       this.idprodus = params.id;
     });
     this.produseService.getProductById(this.idprodus);
-    this.produseService.getCurrentRating(this.idprodus, this.currentUser.mail);
+    this.produseService.getCurrentRating(this.idprodus);
 
 
   }
@@ -44,7 +44,24 @@ export class ShowProductDetailsComponent implements OnInit {
 
   onStarChange(starvalue) {
     this.produseService.setStars(starvalue, this.idprodus, this.currentUser.mail);
-    this.produseService.getCurrentRating(this.idprodus, this.currentUser.mail);
+    this.produseService.getCurrentRating(this.idprodus);
     location.href = '/product/' + this.idprodus;
+  }
+
+  addDiscount(id: any) {
+    location.href = 'products/discount/' + id;
+
+  }
+
+  deleteProduct(idprodus: number) {
+    this.produseService.deleteProduct(idprodus);
+  }
+
+  chestionar(idprodus: number) {
+    location.href = 'survey/' + idprodus;
+  }
+
+  pareri(idprodus: number) {
+    location.href = '/product/review/' + idprodus;
   }
 }

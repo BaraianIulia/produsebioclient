@@ -64,9 +64,9 @@ export class AddProductComponent implements OnInit {
   }
 
   addProduct(nume: string, descriere: string, cantitate: number, pret: number,
-             termenvalabilitate: number, zona: string, valoaremasura: number) {
+             termenvalabilitate: number, zona: string, valoaremasura: number, mail: string) {
     console.log(this.category);
     this.serviceproduct.addProduct(nume, descriere, cantitate, pret, termenvalabilitate, zona,
-      this.fileToUpload, this.category, this.measureunit, this.dataproducere, valoaremasura);
+      this.fileToUpload, this.category, this.measureunit, this.dataproducere, valoaremasura, mail);
   }
 }

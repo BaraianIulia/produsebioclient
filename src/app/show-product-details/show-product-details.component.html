@@ -4,7 +4,6 @@
   <br>
   <p id="nume">Nume: {{ produseService.productFound.nume }}</p>
   <p id="descriere">Descriere: {{produseService.productFound.descriere}}</p>
-  <p id="stoc">Stoc: {{ produseService.productFound.stoc }}</p>
   <p id="zona">Zona: {{produseService.productFound.zona}}</p>
   <p id="categorie">Categorie: {{ produseService.productFound.categorie }}</p>
   <p id="dataProducere">Data producere: {{produseService.productFound.dataProducere | date : 'dd/MM/yyyy'}}</p>
@@ -17,8 +16,8 @@
   <p id="termenValabilitate">Termen valabilitate de la data producerii:
     {{produseService.productFound.termenValabilitate}} Zile</p>
 
-  <p>Votează produsul</p>
-  <rating [(ngModel)]="rate"
+  <p *ngIf="currentFunction==='client'">Votează produsul</p>
+  <rating *ngIf="currentFunction==='client'" [(ngModel)]="rate"
           readOnly="false"
           max="5"
           emptyStarIconName="star-outline"
@@ -37,6 +36,20 @@
   <br>
   <button *ngIf="currentFunction === 'client'" type="button" class="btn btn-outline-success"
           (click)="addCart()">Adaugă în coș
+  </button>
+  <button *ngIf="currentFunction === 'admin'" type="button" class="btn btn-outline-success"
+          (click)="addDiscount(produseService.productFound.idprodus)">Adaugă reducere
+  </button>
+  <button *ngIf="currentFunction === 'admin'" type="button" class="btn btn-outline-success"
+          (click)="deleteProduct(produseService.productFound.idprodus)">Șterge produs
+  </button>
+  <button *ngIf="currentFunction === 'client'" type="button" class="btn btn-outline-success"
+          (click)="chestionar(produseService.productFound.idprodus)">Ai cumpărat? Spune-ți părerea
+  </button>
+  <br>
+  <br>
+  <button type="button" class="btn btn-outline-success"
+          (click)="pareri(produseService.productFound.idprodus)">Vezi opiniile celorlalți despre acest produs
   </button>
 
 

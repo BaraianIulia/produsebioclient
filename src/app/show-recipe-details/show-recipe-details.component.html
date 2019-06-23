@@ -5,10 +5,26 @@
   <p id="nume">Nume: {{ recipeService.recipeFound.nume }}</p>
   <p id="listaproduse">Listă produse: {{recipeService.recipeFound.listaproduse}}</p>
   <p id="modpreparare">Mod preparare: {{ recipeService.recipeFound.modpreparare }}</p>
-  <p id="buget">Buget: {{recipeService.recipeFound.buget}}</p>
+  <p id="buget">Buget: {{recipeService.recipeFound.buget}} LEI</p>
+  <br>
   <p id="timp">Timp: {{ recipeService.recipeFound.timp }}</p>
   <p id="publicataDe">Adăugată de utilizatorul: {{ recipeService.recipeFound.mail }}</p>
 
 
+  <br>
+  <br>
+  <p>Listă produsele din magazin:</p>
+  <ul>
+    <li *ngFor="let item of recipeService.recipeProducts "><p>{{ item.nume }}  {{item.descriere}}  </p>
+      <button mat-raised-button
+
+              (click)="seeDetails(item.idprodus)">
+        Vezi detalii produs
+      </button>
+      <br>
+      <br>
+
+    </li>
+  </ul>
 </div>
 

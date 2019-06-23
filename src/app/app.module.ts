@@ -50,6 +50,10 @@ import {SliderModule} from 'angular-image-slider';
 import {AddDiscountComponent} from './add-discount/add-discount.component';
 import {ShowMyProductsComponent} from './show-my-products/show-my-products.component';
 import {RatingComponent} from './rating/rating.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { SurveyComponent } from './survey/survey.component';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import { OpiniiProdusComponent } from './opinii-produs/opinii-produs.component';
 
 
 @NgModule({
@@ -77,6 +81,9 @@ import {RatingComponent} from './rating/rating.component';
     AddDiscountComponent,
     ShowMyProductsComponent,
     RatingComponent,
+    AdminLoginComponent,
+    SurveyComponent,
+    OpiniiProdusComponent,
 
 
   ],
@@ -102,7 +109,8 @@ import {RatingComponent} from './rating/rating.component';
     SlideshowModule,
     SelectDropDownModule,
     BarRatingModule,
-    StarRatingModule
+    StarRatingModule,
+    Ng2CarouselamosModule
 
   ],
   providers: [UserService, AlertService, ProduseService],

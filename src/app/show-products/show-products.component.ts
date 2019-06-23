@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ShowProductsComponent implements OnInit {
 
   config: any;
+  private nume: any;
 
   constructor(public produseService: ProduseService, private route: ActivatedRoute,
               private router: Router) {
@@ -24,7 +25,19 @@ export class ShowProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.produseService.getAllProducts();
+    this.route.params.subscribe(params => {
+      this.nume = params.nume;
+    });
+
+    console.log(this.nume);
+    if (this.nume !== 'furnizor') {
+      this.produseService.getAllProductsByCategory(this.nume);
+    } else {
+      this.produseService.getListaByProducator(JSON.parse(localStorage.getItem('currentProducerMail')));
+    }
+    console.log(this.produseService.list);
+
+
   }
 
   pageChange(newPage: number) {

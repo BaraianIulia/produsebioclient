@@ -441,4 +441,36 @@ export class UserService {
   getListProducer() {
     return this.producerList;
   }
+
+  loginAdmin(mail: any, parola: any) {
+    const url = 'http://localhost:8080/admin/login';
+    this.http.post(url,
+      {      },
+      {
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+        params: new HttpParams().set('mail', mail).set('parola', parola),
+      }
+    ).subscribe(
+      (res) => {
+        console.log(res);
+        localStorage.setItem('currentUser', JSON.stringify(res));
+        localStorage.setItem('currentFunction', JSON.stringify('admin'));
+
+        this.redirectToHomePage();
+
+      },
+      err => {
+        console.log(err.error.errorMessage);
+        this.alertService.warn(err.error.errorMessage);
+      },
+      () => console.log('HTTP request completed.')
+    );
+
+  }
 }

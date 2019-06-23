@@ -3,7 +3,7 @@
 
   <br>
   <slideshow
-    [height]="'600px'"
+    [height]="'300px'"
     [autoPlay]="true"
     [imageUrls]="this.produseService.listImagini"></slideshow>
 
@@ -14,6 +14,7 @@
     <li><p id="nume1">{{ this.produseService.product1.nume }}</p>
       <p id="descriere1">{{this.produseService.product1.descriere}}</p>
       <img class="center-block" src={{this.produseService.product1.poza}} width="100" height="100">
+
       <br>
       <br>
       <button mat-raised-button
@@ -25,6 +26,7 @@
     <li><p id="nume2">{{ this.produseService.product2.nume }}</p>
       <p id="descriere2">{{this.produseService.product2.descriere}}</p>
       <img class="center-block" src={{this.produseService.product2.poza}} width="100" height="100">
+
       <br>
       <br>
       <button mat-raised-button
@@ -45,4 +47,5 @@
       </button>
     </li>
   </ul>
+  <br>
 </div>

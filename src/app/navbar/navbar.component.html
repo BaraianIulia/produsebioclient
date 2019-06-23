@@ -3,7 +3,18 @@
   <button mat-button (click)="redirectToHomePage()">Acasă</button>
 
 
-  <button mat-button (click)="redirectToShowProducts()">Produse</button>
+  <button mat-button [matMenuTriggerFor]="produse">Produse</button>
+  <mat-menu #produse="matMenu" yPosition="above">
+    <button mat-menu-item (click)="redirectToShowProductsToate()">Toate produsele</button>
+    <button mat-menu-item (click)="redirectToShowProductsLegume()">Legume</button>
+    <button mat-menu-item (click)="redirectToShowProductsFructe()">Fructe</button>
+    <button mat-menu-item (click)="redirectToShowProductsCarne()">Carne</button>
+    <button mat-menu-item (click)="redirectToShowProductsOua()">Ouă</button>
+    <button mat-menu-item (click)="redirectToShowProductsCereale()">Cereale</button>
+    <button mat-menu-item (click)="redirectToShowProductsBauturi()">Băuturi</button>
+    <button mat-menu-item (click)="redirectToShowProductsAltele()">Altele</button>
+
+  </mat-menu>
 
   <button mat-button (click)="redirectToMyProducerPage()">Producători</button>
 
@@ -11,11 +22,12 @@
   <button mat-button (click)="redirectToShowRecipe()">Rețete</button>
   <button mat-button (click)="redirectToContactPage()">Contact</button>
 
-  <button *ngIf="currentFunction === 'furnizor'"  mat-button [matMenuTriggerFor]="adauga">Adaugă</button>
+  <button *ngIf="currentFunction === 'furnizor' || currentFunction === 'admin'" mat-button [matMenuTriggerFor]="adauga">
+    Adaugă
+  </button>
   <mat-menu #adauga="matMenu" yPosition="above">
-    <button mat-menu-item (click)="redirectToAddProduct()">Adaugă produse</button>
-    <button mat-menu-item (click)="redirectToAddRecipe()">Adaugă rețetă</button>
-    <button mat-menu-item (click)="redirectToAddDiscount()">Adaugă reducere</button>
+    <button mat-menu-item *ngIf="currentFunction === 'admin'" (click)="redirectToAddProduct()">Adaugă produse</button>
+    <button mat-menu-item *ngIf="currentFunction === 'furnizor' " (click)="redirectToAddRecipe()">Adaugă rețetă</button>
 
   </mat-menu>
 
@@ -28,7 +40,8 @@
     <button *ngIf="currentFunction !== null" mat-menu-item (click)="userservice.logout()">Deconectare</button>
   </mat-menu>
 
-  <mat-icon *ngIf=" currentFunction === 'client'" id="shopping_cart" (click)="redirectToCartPage()">shopping_cart</mat-icon>
+  <mat-icon *ngIf=" currentFunction === 'client'" id="shopping_cart" (click)="redirectToCartPage()">shopping_cart
+  </mat-icon>
 
 
 </mat-toolbar>

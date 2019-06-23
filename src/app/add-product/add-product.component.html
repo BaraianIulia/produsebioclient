@@ -3,11 +3,15 @@
   <h1>Adaugă produs</h1>
   <form>
 
-        <span tooltip="<p>Acesta este numele pe care îl va vedea clientul.</p>">
+    <label for="mail">Mail producător</label>
+    <input type="text" class="form-control" id="mail" #mail required>
+
+    <span tooltip="<p>Acesta este numele pe care îl va vedea clientul.</p>">
     <button>?</button>
     </span>
     <label for="nume">Nume produs</label>
     <input type="text" class="form-control" id="nume" #nume required>
+
 
     <span
       tooltip="<p>Spre exemplu dacă adăugați o băutură puteți specifica dacă aceasta conține alcool sau nu, iar dacă adăugați carne puteți menționa animalul, ce organ este..</p>">
@@ -82,7 +86,7 @@
     <br>
     <button mat-raised-button
 
-            (click)="addProduct(nume.value, descriere.value, cantitate.value, pret.value, termenvalabilitate.value, zona.value,valoaremasura.value)">
+            (click)="addProduct(nume.value, descriere.value, cantitate.value, pret.value, termenvalabilitate.value, zona.value,valoaremasura.value, mail.value)">
       Adaug&#259; produs
     </button>
 

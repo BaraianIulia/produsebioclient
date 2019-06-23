@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProduseService} from '../serviceProduse/produse.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {map} from 'rxjs/operators';
@@ -13,7 +13,7 @@ export class ProducerComponent implements OnInit {
   config: any;
 
   constructor(public userService: UserService, private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router, private  produseService: ProduseService) {
     this.config = {
       currentPage: 1,
       itemsPerPage: 10
@@ -29,5 +29,10 @@ export class ProducerComponent implements OnInit {
 
   pageChange(newPage: number) {
     this.router.navigate([''], {queryParams: {page: newPage}});
+  }
+
+  redirectToShowProduseFurnizor(mail: any) {
+    localStorage.setItem('currentProducerMail', JSON.stringify(mail));
+    location.href = '/products/show/furnizor';
   }
 }

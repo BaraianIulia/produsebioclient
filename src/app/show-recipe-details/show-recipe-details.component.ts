@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProduseService} from '../serviceProduse/produse.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RecipeService} from '../serviceRecipe/recipe.service';
@@ -12,13 +12,22 @@ export class ShowRecipeDetailsComponent implements OnInit {
   private idrecipe: any;
 
   constructor(public recipeService: RecipeService, private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.idrecipe = params.id;
     });
+
+    console.log('detalii retete');
     this.recipeService.getRecipeById(this.idrecipe);
+
+    this.recipeService.getRecipeProducts(this.idrecipe);
+  }
+
+  seeDetails(idprodus: number) {
+    location.href = '/product/' + idprodus;
   }
 
 }

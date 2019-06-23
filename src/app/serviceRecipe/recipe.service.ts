@@ -14,6 +14,7 @@ export class RecipeService {
   private recipe: Recipe;
   private list: any;
   private recipeFound: Recipe;
+  recipeProducts: any;
 
   constructor(private http: HttpClient, private alertService: AlertService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -87,6 +88,7 @@ export class RecipeService {
   }
 
   getRecipeById(idrecipe: any) {
+
     const url = 'http://localhost:8080/recipe/find';
     this.http.get<Recipe>(url,
       {
@@ -112,5 +114,32 @@ export class RecipeService {
     );
 
 
+  }
+
+  getRecipeProducts(idrecipe: any) {
+    console.log('produsele de la reteta');
+    const url = 'http://localhost:8080/recipe/products';
+    this.http.get(url,
+      {
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+        params: new HttpParams().set('idrecipe', idrecipe),
+      }
+    ).subscribe(
+      (res) => {
+        this.recipeProducts = res;
+
+      },
+      err => {
+        console.log(err.error.errorMessage);
+        this.alertService.warn(err.error.errorMessage);
+      },
+      () => console.log('HTTP request completed.')
+    );
   }
 }

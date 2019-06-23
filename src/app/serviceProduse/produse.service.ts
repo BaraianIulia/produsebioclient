@@ -28,6 +28,8 @@ export class ProduseService implements OnInit {
   listMyProducts: any;
   private reducere: Reducere;
   recenzieProdusTotal: Recenzie;
+  private recenzieProdus: Recenzie;
+  listopinii: any;
 
 
   constructor(private http: HttpClient, private alertService: AlertService) {
@@ -39,7 +41,7 @@ export class ProduseService implements OnInit {
   getAllProducts(): void {
     console.log('iat toate produsele ');
 
-    const url = 'http://localhost:8080/products/';
+    const url = 'http://localhost:8080/produse/';
     this.http.get(url,
       {
         headers: new HttpHeaders({
@@ -69,12 +71,12 @@ export class ProduseService implements OnInit {
   }
 
   addProduct(nume: string, descriere: string, cantitate: number, pret: number, termenvalabilitate: number, zona: string, fileToUpload: any,
-             category: string, measureunit: string, dataproducere: any, valoaremasura: number) {
+             category: string, measureunit: string, dataproducere: any, valoaremasura: number, mail: string) {
 
-    this.product = new Produse(null, this.currentUser.mail, cantitate, zona, category, dataproducere,
+    this.product = new Produse(null, mail, cantitate, zona, category, dataproducere,
       pret, termenvalabilitate, nume, descriere, measureunit, valoaremasura, fileToUpload);
     console.log('adaugprodus');
-    const url = 'http://localhost:8080/products/insert';
+    const url = 'http://localhost:8080/produse/insert';
     this.http.post(url,
       JSON.stringify(this.product),
       {
@@ -113,7 +115,7 @@ export class ProduseService implements OnInit {
   }
 
   getProductById(idprodus: any) {
-    const url = 'http://localhost:8080/products/find';
+    const url = 'http://localhost:8080/produse/find';
     this.http.get<Produse>(url,
       {
         headers: new HttpHeaders({
@@ -143,7 +145,7 @@ export class ProduseService implements OnInit {
     console.log('adaug elemm in cos');
     this.cartProduct = new CartProduct(this.productFound, Number(nrBucati));
 
-    const url = 'http://localhost:8080/products/cart/insert';
+    const url = 'http://localhost:8080/produse/cart/insert';
     this.http.post(url,
       JSON.stringify(this.cartProduct),
       {
@@ -179,7 +181,7 @@ export class ProduseService implements OnInit {
   }
 
   getCartItems() {
-    const url = 'http://localhost:8080/products/cart/get';
+    const url = 'http://localhost:8080/produse/cart/get';
     this.http.get(url,
       {
         headers: new HttpHeaders({
@@ -209,7 +211,7 @@ export class ProduseService implements OnInit {
   }
 
   getCartItemId(item: CartProduct) {
-    const url = 'http://localhost:8080/products/cart/get/product';
+    const url = 'http://localhost:8080/produse/cart/get/product';
     this.http.post(url, JSON.stringify(item),
       {
         headers: new HttpHeaders({
@@ -234,7 +236,7 @@ export class ProduseService implements OnInit {
   }
 
   buyProductsFromCart() {
-    const url = 'http://localhost:8080/products/cart/buy';
+    const url = 'http://localhost:8080/produse/cart/buy';
     this.http.post(url, {},
       {
         headers: new HttpHeaders({
@@ -260,17 +262,18 @@ export class ProduseService implements OnInit {
 
   deleteProductFromCart(id: any) {
 
-    const url = 'http://localhost:8080/products/cart/delete/' + id;
+    const url = 'http://localhost:8080/produse/cart/delete';
     console.log(url);
-    this.http.delete(url,
+    this.http.post(url,
       {
         headers: new HttpHeaders({
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': '*',
-          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
           Accept: 'application/json',
           'Content-Type': 'application/json',
-        })
+        }),
+        params: new HttpParams().set('id', id)
       }
     ).subscribe(
       (res) => {
@@ -285,7 +288,7 @@ export class ProduseService implements OnInit {
   }
 
   getListaImagini() {
-    const url = 'http://localhost:8080/products/top10';
+    const url = 'http://localhost:8080/produse/top10';
     this.http.get(url,
       {
         headers: new HttpHeaders({
@@ -323,7 +326,7 @@ export class ProduseService implements OnInit {
 
   getAllMyProducts() {
     console.log('iau toate produsele mele...');
-    const url = 'http://localhost:8080/products/mine';
+    const url = 'http://localhost:8080/produse/mine';
     this.http.get(url,
       {
         headers: new HttpHeaders({
@@ -350,7 +353,7 @@ export class ProduseService implements OnInit {
   }
 
   setDiscount(discount: string, idproduct: number, datastart: any, datafinal: any) {
-    const url = 'http://localhost:8080/products/set/discount';
+    const url = 'http://localhost:8080/produse/set/discount';
     this.reducere = new Reducere(null, idproduct, Number(discount), datastart, datafinal);
     console.log(this.reducere);
     this.http.post(url, JSON.stringify(this.reducere),
@@ -381,7 +384,7 @@ export class ProduseService implements OnInit {
 
 
   setStars(starvalue: any, idprodus: any, mail: string | any) {
-    const url = 'http://localhost:8080/products/set/star';
+    const url = 'http://localhost:8080/produse/set/star';
     this.http.post(url, {},
       {
         headers: new HttpHeaders({
@@ -406,9 +409,9 @@ export class ProduseService implements OnInit {
     );
   }
 
-  getCurrentRating(idprodus: any, mail: any) {
+  getCurrentRating(idprodus: any) {
     console.log('iau toate stelele mele...');
-    const url = 'http://localhost:8080/products/get/rating';
+    const url = 'http://localhost:8080/produse/get/rating';
     this.http.get<Recenzie>(url,
       {
         headers: new HttpHeaders({
@@ -437,7 +440,7 @@ export class ProduseService implements OnInit {
 
   getDiscount(idprodus: any) {
     console.log('iau toate stelele mele...');
-    const url = 'http://localhost:8080/products/get/discount';
+    const url = 'http://localhost:8080/produse/get/discount';
     this.http.get<Reducere>(url,
       {
         headers: new HttpHeaders({
@@ -451,10 +454,154 @@ export class ProduseService implements OnInit {
       }
     ).subscribe(
       (res) => {
+        console.log(res);
         return res.procent;
       },
       err => {
 
+        console.log(err.error.errorMessage);
+        this.alertService.warn(err.error.errorMessage);
+      },
+      () => console.log('HTTP request completed.')
+    );
+  }
+
+  getAllProductsByCategory(nume: any) {
+    console.log('iat toate produsele ');
+
+    const url = 'http://localhost:8080/produse/';
+    this.http.get(url,
+      {
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+        params: new HttpParams().set('categorie', nume)
+      }
+    ).subscribe(
+      (res) => {
+        console.log(res);
+        this.list = res;
+
+      },
+      err => {
+        console.log(err.error.errorMessage);
+        this.alertService.warn(err.error.errorMessage);
+      },
+      () => console.log('HTTP request completed.')
+    );
+  }
+
+  getListaByProducator(mail: any) {
+
+    console.log('iat toate produsele PRODUCATOR');
+
+    const url = 'http://localhost:8080/produse/furnizor';
+    this.http.get(url,
+      {
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+        params: new HttpParams().set('mail', mail)
+      }
+    ).subscribe(
+      (res) => {
+        console.log(res);
+        this.list = res;
+
+      },
+      err => {
+        console.log(err.error.errorMessage);
+        this.alertService.warn(err.error.errorMessage);
+      },
+      () => console.log('HTTP request completed.')
+    );
+  }
+
+  deleteProduct(idprodus: number) {
+    const url = 'http://localhost:8080/produse/delete';
+    console.log(url);
+    this.http.delete(url,
+      {
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': '*',
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Credentials': 'true',
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+        params: new HttpParams().set('idprodus', String(idprodus))
+      }
+    ).subscribe(
+      (res) => {
+        location.href = '/';
+      },
+      err => {
+        console.log(err.error.errorMessage);
+        this.alertService.warn(err.error.errorMessage);
+      },
+      () => console.log('HTTP request completed.')
+    );
+  }
+
+  chestionar(opinie: string, idproduct: any) {
+    const url = 'http://localhost:8080/produse/chestionar';
+    this.recenzieProdus = new Recenzie(null, idproduct, opinie, 0, new Date(), this.currentUser.mail);
+    console.log(this.recenzieProdus);
+    this.http.post(url, JSON.stringify(this.recenzieProdus),
+      {
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      }
+    ).subscribe(
+      (res) => {
+        this.alertService.warn('Mulțumim pentru opinie.');
+        this.delay(7000);
+        this.redirectToHomePage();
+
+      },
+      err => {
+        console.log(err.error.errorMessage);
+        this.alertService.warn(err.error.errorMessage);
+      },
+      () => console.log('HTTP request completed.')
+    );
+  }
+
+  getListaOpinii(idprodus: any) {
+
+    const url = 'http://localhost:8080/produse/opinii';
+    this.http.get(url,
+      {
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+        params: new HttpParams().set('idprodus', idprodus)
+      }
+    ).subscribe(
+      (res) => {
+        console.log(res);
+        this.listopinii = res;
+
+      },
+      err => {
         console.log(err.error.errorMessage);
         this.alertService.warn(err.error.errorMessage);
       },

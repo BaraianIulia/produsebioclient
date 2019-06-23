@@ -3,21 +3,38 @@
   <h1>Adaugă rețetă</h1>
   <form>
 
+
     <label for="nume">Nume rețetă</label>
     <input type="text" class="form-control" id="nume" #nume required>
+
+    <span tooltip="<p>Listă produse înșirate cu virgulș. Spre exemplu lapte, carne de porc</p>">
+    <button>?</button>
+    </span>
 
     <label for="produse">Produse necesare </label>
     <input type="text" class="form-control" id="produse" #produse required>
 
+    <span tooltip="<p>Descrieți pașii rețetei.</p>">
+    <button>?</button>
+    </span>
     <label for="mod_preparare">Mod preparare </label>
     <textarea class="form-control" id="mod_preparare" #mod_preparare cols="5" rows="5"></textarea>
 
+    <span tooltip="<p>Exemplu: 1h 20min</p>">
+    <button>?</button>
+    </span>
     <label for="timp">Timp </label>
     <input type="text" class="form-control" id="timp" #timp required>
 
+    <span tooltip="<p>Valoarea va fi scrisă în lei. Spre exemplu 20.</p>">
+    <button>?</button>
+    </span>
     <label for="buget">Buget </label>
-    <input type="text" class="form-control" id="buget" #buget required>
+    <input placeholder="LEI" type="text" class="form-control" id="buget" #buget required>
 
+    <span tooltip="<p>Adăugați o fotografie sugestivă pentru rețetă.</p>">
+    <button>?</button>
+    </span>
     <label for="file">Alege o poză</label>
     <input id="file" #file type="file" (change)="handleFileInput($event)"/>
     <img [src]="imgURL" height="200" *ngIf="imgURL">

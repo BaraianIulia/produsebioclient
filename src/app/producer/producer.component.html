@@ -7,6 +7,10 @@
       <p id="mail">Mail: {{item.mail}}</p>
       <img class="center-block" src={{item.poza}} width="250" height="250">
 
+      <br>
+      <button type="button" class="btn btn-outline-success" (click)="redirectToShowProduseFurnizor(item.mail)">Vezi produse furnizor</button>
+      <br>
+
     </li>
   </ul>
   <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>

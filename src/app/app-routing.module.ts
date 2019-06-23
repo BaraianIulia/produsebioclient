@@ -20,6 +20,9 @@ import {ShowRecipeComponent} from './show-recipe/show-recipe.component';
 import {ShowRecipeDetailsComponent} from './show-recipe-details/show-recipe-details.component';
 import {AddDiscountComponent} from './add-discount/add-discount.component';
 import {ShowMyProductsComponent} from './show-my-products/show-my-products.component';
+import {AdminLoginComponent} from './admin-login/admin-login.component';
+import {SurveyComponent} from './survey/survey.component';
+import {OpiniiProdusComponent} from './opinii-produs/opinii-produs.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -34,7 +37,7 @@ const routes: Routes = [
   {path: 'editcodiban/:nume', component: ProfileCodIbaneditComponent},
   {path: 'viewcard/:nume', component: ViewCardComponent},
   {path: 'viewcodiban/:nume', component: ViewCodibanComponent},
-  {path: 'products', component: ShowProductsComponent},
+  {path: 'products/show/:nume', component: ShowProductsComponent},
   {path: 'product/add', component: AddProductComponent},
   {path: 'recipe/add', component: AddRecipeComponent},
   {path: 'product/:id', component: ShowProductDetailsComponent},
@@ -42,6 +45,9 @@ const routes: Routes = [
   {path: 'recipe/:id', component: ShowRecipeDetailsComponent},
   {path: 'products/discount', component: ShowMyProductsComponent},
   {path: 'products/discount/:id', component: AddDiscountComponent},
+  {path: 'admin/login', component: AdminLoginComponent},
+  {path: 'survey/:id', component: SurveyComponent},
+  {path: 'product/review/:id', component: OpiniiProdusComponent},
   {path: '', component: HomeComponent},
 ];
 

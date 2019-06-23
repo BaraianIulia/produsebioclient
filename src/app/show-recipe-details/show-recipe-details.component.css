@@ -11,6 +11,7 @@ div {
 
 p{
   font-size: 140%;
+  display: inline-block;
 }
 
 img{
@@ -25,6 +26,7 @@ button {
   margin-right: 10px;
   color: forestgreen;
   background-color: white;
+  display: inline-block;
 
 }
 
