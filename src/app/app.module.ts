@@ -54,6 +54,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { SurveyComponent } from './survey/survey.component';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { OpiniiProdusComponent } from './opinii-produs/opinii-produs.component';
+import { AchizitieCompletaComponent } from './achizitie-completa/achizitie-completa.component';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { OpiniiProdusComponent } from './opinii-produs/opinii-produs.component';
     AdminLoginComponent,
     SurveyComponent,
     OpiniiProdusComponent,
+    AchizitieCompletaComponent,
 
 
   ],

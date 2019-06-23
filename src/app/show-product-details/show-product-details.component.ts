@@ -64,4 +64,8 @@ export class ShowProductDetailsComponent implements OnInit {
   pareri(idprodus: number) {
     location.href = '/product/review/' + idprodus;
   }
+
+  redirectToHomePage() {
+    location.href = '';
+  }
 }

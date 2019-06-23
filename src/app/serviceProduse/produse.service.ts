@@ -250,7 +250,7 @@ export class ProduseService implements OnInit {
       }
     ).subscribe(
       (res) => {
-        this.alertService.warn('Mulțumim');
+        location.href = 'achizitie/detalii';
       },
       err => {
         console.log(err.error.errorMessage);
@@ -263,8 +263,7 @@ export class ProduseService implements OnInit {
   deleteProductFromCart(id: any) {
 
     const url = 'http://localhost:8080/produse/cart/delete';
-    console.log(url);
-    this.http.post(url,
+    this.http.post(url, {},
       {
         headers: new HttpHeaders({
           'Access-Control-Allow-Origin': '*',
@@ -608,4 +607,34 @@ export class ProduseService implements OnInit {
       () => console.log('HTTP request completed.')
     );
   }
+
+  sendEmail() {
+
+    const url = 'http://localhost:8080/email/semdemail';
+
+    this.http.post(url, {},
+      {
+        headers: new HttpHeaders({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      }
+    ).subscribe(
+      (res) => {
+        this.alertService.warn('Mulțumim pentru opinie.');
+        this.delay(7000);
+        this.redirectToHomePage();
+
+      },
+      err => {
+        console.log(err.error.errorMessage);
+        this.alertService.warn(err.error.errorMessage);
+      },
+      () => console.log('HTTP request completed.')
+    );
+  }
+
 }

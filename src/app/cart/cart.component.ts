@@ -21,10 +21,12 @@ export class CartComponent implements OnInit {
 
   buyProductsFromCart() {
     this.produseService.buyProductsFromCart();
+
   }
 
   deleteProductFromCart(item) {
     console.log('id-ul este' + item);
     this.produseService.deleteProductFromCart(item);
   }
+
 }

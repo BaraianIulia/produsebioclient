@@ -23,6 +23,7 @@ import {ShowMyProductsComponent} from './show-my-products/show-my-products.compo
 import {AdminLoginComponent} from './admin-login/admin-login.component';
 import {SurveyComponent} from './survey/survey.component';
 import {OpiniiProdusComponent} from './opinii-produs/opinii-produs.component';
+import {AchizitieCompletaComponent} from './achizitie-completa/achizitie-completa.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -48,6 +49,7 @@ const routes: Routes = [
   {path: 'admin/login', component: AdminLoginComponent},
   {path: 'survey/:id', component: SurveyComponent},
   {path: 'product/review/:id', component: OpiniiProdusComponent},
+  {path: 'achizitie/detalii', component: AchizitieCompletaComponent},
   {path: '', component: HomeComponent},
 ];
 

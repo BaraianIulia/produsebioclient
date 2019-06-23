@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProduseService} from '../serviceProduse/produse.service';
-import {Produse} from '../models/produse.model';
 
 
 @Component({
@@ -23,8 +22,6 @@ export class HomeComponent implements OnInit {
     this.produseService.getListaImagini();
     console.log('imaginile mele');
     console.log(this.imagesUrl);
-
-
 
 
   }
